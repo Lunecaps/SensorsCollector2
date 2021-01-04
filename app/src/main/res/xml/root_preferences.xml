@@ -1,14 +1,13 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="Collector Settings">
-
         <ListPreference
             app:defaultValue="0"
             app:entries="@array/carry_type_entries"
             app:entryValues="@array/carry_type_values"
             app:key="carry_type"
             app:title="Carry Type"
-            app:useSimpleSummaryProvider="true"/>
+            app:useSimpleSummaryProvider="true"
+            app:iconSpaceReserved="false"/>
 
         <ListPreference
             app:defaultValue="0"
@@ -16,7 +15,8 @@
             app:entryValues="@array/environment_values"
             app:key="environment"
             app:title="Environment"
-            app:useSimpleSummaryProvider="true" />
+            app:useSimpleSummaryProvider="true"
+            app:iconSpaceReserved="false"/>
 
         <ListPreference
             app:defaultValue="0"
@@ -24,8 +24,7 @@
             app:entryValues="@array/speed_level_values"
             app:key="speed_level"
             app:title="Speed Level"
-            app:useSimpleSummaryProvider="true" />
-
-    </PreferenceCategory>
+            app:useSimpleSummaryProvider="true"
+            app:iconSpaceReserved="false"/>
 
 </PreferenceScreen>
