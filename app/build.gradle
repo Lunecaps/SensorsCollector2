@@ -30,8 +30,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    viewBinding {
-        enabled = true
+//    viewBinding {
+//        enabled = true
+//    }
+    buildFeatures{
+        viewBinding = true
     }
 }
 
@@ -42,7 +45,13 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.preference:preference-ktx:1.1.1'
+    implementation("com.squareup.okio:okio:2.9.0")
+    implementation 'com.permissionx.guolindev:permissionx:1.4.0'
+    compile 'com.neovisionaries:nv-bluetooth:1.8'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

@@ -1,8 +1,9 @@
-package com.example.sensorscollector2
+package com.example.sensorscollector2.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
+import com.example.sensorscollector2.R
 
 class SettingsActivity : AppCompatActivity() {
 

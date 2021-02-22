@@ -8,10 +8,10 @@
         <item>handbag</item>
     </string-array>
     <string-array name="carry_type_values">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
+        <item>hand</item>
+        <item>coat</item>
+        <item>trousers</item>
+        <item>handbag</item>
     </string-array>
 
     <!--    environment settings     -->
@@ -22,10 +22,10 @@
         <item>parking</item>
     </string-array>
     <string-array name="environment_values">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
+        <item>lab</item>
+        <item>crossenv</item>
+        <item>interfere</item>
+        <item>parking</item>
     </string-array>
 
     <!--    speed level settings     -->
@@ -34,9 +34,22 @@
         <item>low</item>
     </string-array>
     <string-array name="speed_level_values">
-        <item>0</item>
-        <item>1</item>
+        <item>fast</item>
+        <item>low</item>
     </string-array>
 
+    <!--    sensor delay settings     -->
+    <string-array name="sensor_delay_entries">
+        <item>SENSOR_DELAY_FASTEST(0)</item>
+        <item>SENSOR_DELAY_GAME(20,000μs)</item>
+        <item>SENSOR_DELAY_UI(20,000μs)</item>
+        <item>SENSOR_DELAY_NORMAL(200,000μs)</item>
+    </string-array>
+    <string-array name="sensor_delay_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
 
 </resources>
