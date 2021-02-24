@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sensorscollector2.activity.tests.TestOrientationActivity
 import com.example.sensorscollector2.activity.tests.TestRealtimeAccelerationActivity
+import com.example.sensorscollector2.activity.tests.TestStepDetectorActivity
 import com.example.sensorscollector2.adaptor.ActivityListAdaptor
 import com.example.sensorscollector2.databinding.ActivityTestEntryBinding
 
@@ -27,7 +28,8 @@ class TestEntryActivity : AppCompatActivity() {
     companion object {
         val tests = arrayListOf<Pair<String, Activity>>(
             Pair("orientation", TestOrientationActivity()),
-            Pair("linear acceleration", TestRealtimeAccelerationActivity())
+            Pair("linear acceleration", TestRealtimeAccelerationActivity()),
+            Pair("step detector", TestStepDetectorActivity())
         )
     }
 }

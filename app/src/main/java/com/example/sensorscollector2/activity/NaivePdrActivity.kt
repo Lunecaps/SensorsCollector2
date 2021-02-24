@@ -7,7 +7,6 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
 import android.os.Environment
-import android.os.SystemClock
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sensorscollector2.Utils.registerSensors
 import com.example.sensorscollector2.collector.DataEvent
@@ -16,7 +15,7 @@ import com.example.sensorscollector2.collector.consumer.NaivePdrConsumer
 import com.example.sensorscollector2.collector.consumer.WriteToFileConsumer
 import com.example.sensorscollector2.databinding.ActivityNaivePdrBinding
 import com.example.sensorscollector2.pdr.heading.MagneticOrientation
-import com.example.sensorscollector2.pdr.step.LinearAccelerationMagnitudePeakCheckStepDetector
+import com.example.sensorscollector2.pdr.step.StaticAccMagnitudeStepDetector
 import com.example.sensorscollector2.pdr.stride.FixedStrideLengthStrategy
 import java.io.File
 import java.util.concurrent.ArrayBlockingQueue
@@ -64,7 +63,7 @@ class NaivePdrActivity : AppCompatActivity(), SensorEventListener {
             consumers = arrayListOf(
                 WriteToFileConsumer(dir),
                 NaivePdrConsumer(
-                    stepDetector =  LinearAccelerationMagnitudePeakCheckStepDetector(),
+                    stepDetector =  StaticAccMagnitudeStepDetector(),
                     orientationDetector = MagneticOrientation(),
                     strideLengthStrategy = FixedStrideLengthStrategy(0.5F),
                     followingConsumers =  arrayListOf(

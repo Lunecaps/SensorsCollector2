@@ -36,4 +36,5 @@
     <string name="example">example</string>
     <string name="ready">ready</string>
     <string name="rotation_angles">rotation angles</string>
+    <string name="_0">0</string>
 </resources>

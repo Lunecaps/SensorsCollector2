@@ -1,6 +1,8 @@
 package com.example.sensorscollector2.collector.consumer
 
+import com.example.sensorscollector2.Utils.GeneratedType
 import com.example.sensorscollector2.collector.DataEvent
+import com.example.sensorscollector2.collector.generated2misc
 import com.example.sensorscollector2.collector.sensor2misc
 import com.example.sensorscollector2.collector.writeDataEventToFile
 import okio.buffer
@@ -54,5 +56,19 @@ class WriteToFileConsumer(private val dataDir: File): ISensorEventConsumer {
             }
         }
 
+        fun createGeneratedFiles(generatedList: List<GeneratedType>, dataDir: File) {
+            val dir = File(dataDir, "generated")
+            createDataDir(dir)
+
+            for(gen in generatedList) {
+                val misc = generated2misc[gen] ?: continue
+                val file = File(dir, "${misc.name}.csv")
+                if(file.exists()) continue
+                file.sink(append = true).buffer().use { sink ->
+                    sink.writeUtf8(misc.firstLine)
+                    sink.writeUtf8("\n")
+                }
+            }
+        }
     }
 }

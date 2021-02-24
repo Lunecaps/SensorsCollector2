@@ -3,7 +3,9 @@ package com.example.sensorscollector2.collector
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.util.Log
+import com.example.sensorscollector2.Utils.GeneratedType
 import com.example.sensorscollector2.model.BleEvent
+import com.example.sensorscollector2.model.GeneratedEvent
 import okio.buffer
 import okio.sink
 import java.io.File
@@ -16,6 +18,9 @@ fun writeDataEventToFile(event: DataEvent, dataDir: File) {
         }
         is BleEvent -> {
             writeBleEventToFile(event.event, dataDir)
+        }
+        is GeneratedEvent -> {
+            writeGeneratedEventToFile(event.event, dataDir)
         }
     }
 }
@@ -76,6 +81,41 @@ fun writeBleEventToFile(event: BleEvent, dataDir: File) {
         sink.writeUtf8(",")
         sink.writeUtf8("${event.scanResult.timestampNanos}")
         sink.writeUtf8("\n")
+    }
+}
+
+val generated2misc = mapOf(
+    Pair(
+        GeneratedType.Gen_Step_Detector,
+        SensorMisc("step_detector", "timestamp", 0)
+    ),
+    Pair(
+        GeneratedType.Gen_Rotation_Angles,
+        SensorMisc("rotation_angles", "azimuth,pitch,roll,timestamp", 3)
+    ),
+    Pair(
+        GeneratedType.Gen_Trajectory,
+        SensorMisc("trajectory", "x,y,timestamp", 2)
+    )
+)
+
+fun writeGeneratedEventToFile(event: GeneratedEvent, dataDir: File) {
+    if(event.genType in generated2misc.keys) {
+        val misc = generated2misc[event.genType]?:return
+        val file = File(dataDir, "generated/${misc.name}.csv")
+        file.sink(append = true).buffer().use { sink ->
+            if(misc.size > 0) {
+                repeat(misc.size) { i ->
+                    sink.writeUtf8("${event.data[i]}")
+                    sink.writeUtf8(",")
+                }
+            }
+
+            sink.writeUtf8("${event.timestamp}")
+            sink.writeUtf8("\n")
+        }
+    } else {
+        Log.w("writeToFile", "strange generated event type")
     }
 }
 

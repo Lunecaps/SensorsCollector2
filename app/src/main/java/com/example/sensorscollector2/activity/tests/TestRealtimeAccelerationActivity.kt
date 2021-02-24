@@ -39,7 +39,8 @@ class TestRealtimeAccelerationActivity : AppCompatActivity(), SensorEventListene
                 Sensor.TYPE_LINEAR_ACCELERATION
             ),
             sensorManager,
-            this
+            this,
+            SensorManager.SENSOR_DELAY_NORMAL
         )
     }
 
