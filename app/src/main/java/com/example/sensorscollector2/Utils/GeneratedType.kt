@@ -5,3 +5,4 @@ enum class GeneratedType {
     Gen_Trajectory,
     Gen_Rotation_Angles
 }
+

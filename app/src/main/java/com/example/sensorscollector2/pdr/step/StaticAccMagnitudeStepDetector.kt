@@ -14,7 +14,7 @@ class StaticAccMagnitudeStepDetector(
 ): IStepDetector {
 
     private var detected = false
-    private var consumed = false
+    private var consumed = true
     private var lastTimestamp: Long = 0
 
     override fun updateWithDataEvent(event: DataEvent): DataEvent? {

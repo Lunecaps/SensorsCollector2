@@ -23,6 +23,8 @@ class MagneticOrientation : IOrientationDetector{
     private val rotationMatrix = FloatArray(9)
     private val rotationAngles = FloatArray(3)
 
+    private var ready = false
+
     override fun updateWithDataEvent(event: DataEvent): DataEvent? {
         when(event.event) {
             is SensorEvent -> {
@@ -42,6 +44,8 @@ class MagneticOrientation : IOrientationDetector{
                             SensorManager.getOrientation(rotationMatrix, rotationAngles)
                             lastTimestamp = sensorEvent.timestamp
 
+                            ready = true
+
                             return DataEvent(
                                 TYPE_GENERATED_EVENT,
                                 GeneratedEvent(
@@ -60,7 +64,12 @@ class MagneticOrientation : IOrientationDetector{
     }
 
     override fun getOrientation(): FloatArray {
-        return rotationAngles
+        return if (ready) {
+            rotationAngles
+        } else {
+            FloatArray(0)
+        }
+
     }
 
     override fun lastOrientationTimestamp(): Long {
