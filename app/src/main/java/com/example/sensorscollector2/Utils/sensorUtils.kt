@@ -21,6 +21,6 @@ fun registerSensors(
 
 @SuppressLint("SimpleDateFormat")
 fun getTimeStringFromCurrentTimeMillis(currentTimeMillis : Long) : String {
-    val format = java.text.SimpleDateFormat("yyyy-MM-dd-HH:mm:ss")
+    val format = java.text.SimpleDateFormat("yyyy-MM-dd-HH-mm-ss")
     return format.format(Date(currentTimeMillis))
 }
